@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 
 export default function MovieList() {
     const [movies, setMovies] = useState([]);
@@ -24,6 +26,10 @@ export default function MovieList() {
                             alt={m.title}
                         />
                         <p>Note : {m.vote_average}</p>
+                        <Link to={`/movie/${m.id}`}>
+                            <button>Voir les détails</button>
+                        </Link>
+
                     </div>
                 ))}
             </div>
