@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-
 export default function MovieList() {
     const [movies, setMovies] = useState([]);
     const [category, setCategory] = useState("popular");
