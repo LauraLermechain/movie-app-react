@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"; // useParams pour récupérer les paramètres de l'URL
+import { useContext } from "react";
+import { WishlistContext } from "../context/WishlistProvider";
 
-export default function MovieDetail() {
+
+export default function MovieDetails() {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
     const [cast, setCast] = useState([]);
+    const { wishlist, addToWishlist, removeFromWishlist } = useContext(WishlistContext);
+
+    const isInWishlist = wishlist.some((m) => m.id === movie?.id);
 
     useEffect(() => {
         const apiKey = import.meta.env.VITE_TMDB_API_KEY;
@@ -34,6 +40,17 @@ export default function MovieDetail() {
                     </li>
                 ))}
             </ul>
+            <button
+                onClick={() => {
+                    if (isInWishlist) {
+                        removeFromWishlist(movie.id);
+                    } else {
+                        addToWishlist(movie);
+                    }
+                }}
+            >
+                {isInWishlist ? "Retirer de la wishlist" : "Ajouter à la wishlist"}
+            </button>
 
         </div>
     );
