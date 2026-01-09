@@ -9,18 +9,21 @@ export default function MovieDetails() {
     const [movie, setMovie] = useState(null);
     const [cast, setCast] = useState([]);
     const { wishlist, addToWishlist, removeFromWishlist } = useContext(WishlistContext);
+    const [similar, setSimilar] = useState([]);
+
 
     const isInWishlist = wishlist.some((m) => m.id === movie?.id);
 
     useEffect(() => {
         const apiKey = import.meta.env.VITE_TMDB_API_KEY;
-
         Promise.all([
-            fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`).then((r) => r.json()),
-            fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}`).then((r) => r.json()),
-        ]).then(([movieData, creditsData]) => {
+            fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=fr-FR`).then((r) => r.json()),
+            fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}&language=fr-FR`).then((r) => r.json()),
+            fetch(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${apiKey}&language=fr-FR&page=1`).then((r) => r.json()),
+        ]).then(([movieData, creditsData, similarData]) => {
             setMovie(movieData);
-            setCast((creditsData.cast || []).slice(0, 10)); 
+            setCast((creditsData.cast || []).slice(0, 10));
+            setSimilar((similarData.results || []).slice(0, 8));
         });
     }, [id]);
 
@@ -34,7 +37,11 @@ export default function MovieDetails() {
         <div className={styles.page}>
             <div className={styles.header}>
                 {posterUrl && (
-                    <img className={styles.poster} src={posterUrl} alt={movie.title} />
+                    <img
+                        className={styles.poster}
+                        src={posterUrl}
+                        alt={movie.title}
+                    />
                 )}
 
                 <div className={styles.info}>
@@ -47,13 +54,16 @@ export default function MovieDetails() {
                     <p className={styles.overview}>{movie.overview}</p>
 
                     <button
-                        className={`${styles.favBtn} ${isInWishlist ? styles.favBtnActive : ""}`}
+                        className={`${styles.favBtn} ${isInWishlist ? styles.favBtnActive : ""
+                            }`}
                         onClick={() => {
                             if (isInWishlist) removeFromWishlist(movie.id);
                             else addToWishlist(movie);
                         }}
                     >
-                        {isInWishlist ? "Retirer des favoris" : "Ajouter aux favoris"}
+                        {isInWishlist
+                            ? "Retirer des favoris"
+                            : "Ajouter aux favoris"}
                     </button>
                 </div>
             </div>
@@ -69,19 +79,39 @@ export default function MovieDetails() {
                     return (
                         <div className={styles.actorCard} key={a.id}>
                             {actorImg ? (
-                                <img className={styles.actorImg} src={actorImg} alt={a.name} />
+                                <img
+                                    className={styles.actorImg}
+                                    src={actorImg}
+                                    alt={a.name}
+                                />
                             ) : (
                                 <div className={styles.actorPlaceholder}>?</div>
                             )}
 
                             <div className={styles.actorName}>{a.name}</div>
                             <div className={styles.actorRole}>
-                                {a.character ? a.character : ""}
+                                {a.character || ""}
                             </div>
                         </div>
                     );
                 })}
             </div>
+
+            <h2 className={styles.sectionTitle}>Films similaires</h2>
+
+            <div className={styles.similarGrid}>
+                {similar.map((m) => (
+                    <div className={styles.similarCard} key={m.id}>
+                        <img
+                            className={styles.similarPoster}
+                            src={`https://image.tmdb.org/t/p/w200${m.poster_path}`}
+                            alt={m.title}
+                        />
+                        <div className={styles.similarTitle}>{m.title}</div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
+
 }
