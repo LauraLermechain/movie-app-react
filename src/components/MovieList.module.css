@@ -14,7 +14,6 @@
     margin-bottom: 16px;
 }
 
-/* Boutons "clairs" (mais très lisibles sur fond sombre) */
 .button {
     padding: 10px 12px;
     border-radius: 999px;
@@ -30,7 +29,6 @@
         box-shadow: 0 0 14px rgba(0, 220, 255, 0.28);
     }
 
-/* Catégorie sélectionnée */
 .buttonActive {
     background: rgba(0, 220, 255, 0.28);
     box-shadow: 0 0 18px rgba(0, 220, 255, 0.45);
@@ -102,3 +100,21 @@
         background: rgba(0, 200, 255, 0.22);
         box-shadow: 0 0 14px rgba(0, 220, 255, 0.28);
     }
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pageNumber {
+    color: #e8fbff;
+    font-weight: 700;
+}
+.button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
