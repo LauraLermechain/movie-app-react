@@ -1,0 +1,120 @@
+.page {
+    padding: 24px;
+}
+
+.title {
+    margin: 0 0 16px;
+    color: #e8fbff;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.button {
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 220, 255, 0.35);
+    background: rgba(0, 180, 255, 0.14);
+    color: #e8fbff;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 220, 255, 0.14);
+}
+
+    .button:hover {
+        background: rgba(0, 200, 255, 0.22);
+        box-shadow: 0 0 14px rgba(0, 220, 255, 0.28);
+    }
+
+.buttonActive {
+    background: rgba(0, 220, 255, 0.28);
+    box-shadow: 0 0 18px rgba(0, 220, 255, 0.45);
+}
+
+.input {
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 220, 255, 0.35);
+    background: rgba(0, 180, 255, 0.12);
+    color: #e8fbff;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 220, 255, 0.12);
+}
+
+    .input::placeholder {
+        color: rgba(232, 251, 255, 0.65);
+    }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.card {
+    padding: 12px;
+    border-radius: 16px;
+    background: rgba(0, 40, 60, 0.55);
+    border: 1px solid rgba(0, 220, 255, 0.2);
+    box-shadow: 0 0 18px rgba(0, 200, 255, 0.15);
+}
+
+    .card:hover {
+        box-shadow: 0 0 24px rgba(0, 220, 255, 0.25);
+    }
+
+.poster {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.movieTitle {
+    color: #e8fbff;
+    font-size: 14px;
+    margin: 0 0 6px;
+}
+
+.note {
+    color: rgba(232, 251, 255, 0.8);
+    margin: 0 0 10px;
+    font-size: 13px;
+}
+
+.detailsBtn {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 220, 255, 0.35);
+    background: rgba(0, 180, 255, 0.14);
+    color: #e8fbff;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 220, 255, 0.14);
+}
+
+    .detailsBtn:hover {
+        background: rgba(0, 200, 255, 0.22);
+        box-shadow: 0 0 14px rgba(0, 220, 255, 0.28);
+    }
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pageNumber {
+    color: #e8fbff;
+    font-weight: 700;
+}
+.button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
