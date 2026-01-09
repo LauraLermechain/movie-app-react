@@ -8,10 +8,10 @@ export default function Navbar() {
     return (
         <nav>
             <Link to="/">Accueil</Link>
+            <Link to="/wishlist" style={{ marginLeft: "20px" }}>
+                Wishlist ({wishlist.length})
+            </Link>
 
-            <span style={{ marginLeft: "20px" }}>
-                Wishlist : {wishlist.length}
-            </span>
         </nav>
     );
 }
