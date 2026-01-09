@@ -1,16 +1,32 @@
-# React + Vite
+# 🎬 Movie App React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+Application web développée avec **React** permettant de consulter des films à partir de l’API **The Movie Database (TMDb)**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+L’application permet :
+- d’afficher une liste de films par catégories (Now Playing, Popular, Top Rated, Upcoming),
+- de rechercher un film par son titre,
+- d’afficher les détails d’un film (affiche, résumé, date de sortie, note, acteurs, films similaires),
+- de gérer une wishlist de films favoris avec sauvegarde dans le `localStorage`.
 
-## React Compiler
+Ce projet a été réalisé dans un cadre pédagogique afin de mettre en pratique les concepts fondamentaux de React.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Pré-requis
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Node.js** (version 18 ou supérieure recommandée)
+- **npm**
+- Un navigateur web récent
+- Une clé API **The Movie Database (TMDb)**
+
+---
+
+## Installation et lancement
+
+### 1️⃣ Cloner le dépôt
+
+```bash
+git clone https://github.com/LauraLermechain/movie-app-react.git
+cd movie-app-react
