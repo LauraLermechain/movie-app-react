@@ -1,0 +1,73 @@
+.page {
+    padding: 24px;
+}
+
+.title {
+    margin: 0 0 16px;
+    color: #e8fbff;
+}
+
+.input {
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 220, 255, 0.35);
+    background: rgba(0, 180, 255, 0.12);
+    color: #e8fbff;
+    outline: none;
+    margin-bottom: 16px;
+}
+
+    .input::placeholder {
+        color: rgba(232, 251, 255, 0.65);
+    }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.card {
+    padding: 12px;
+    border-radius: 16px;
+    background: rgba(0, 40, 60, 0.55);
+    border: 1px solid rgba(0, 220, 255, 0.2);
+    box-shadow: 0 0 18px rgba(0, 200, 255, 0.15);
+}
+
+.poster {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.movieTitle {
+    color: #e8fbff;
+    font-size: 14px;
+    margin: 0 0 6px;
+}
+
+.note {
+    color: rgba(232, 251, 255, 0.8);
+    margin: 0 0 10px;
+    font-size: 13px;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.button {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 220, 255, 0.35);
+    background: rgba(0, 180, 255, 0.14);
+    color: #e8fbff;
+    cursor: pointer;
+}
+
+    .button:hover {
+        background: rgba(0, 200, 255, 0.22);
+    }

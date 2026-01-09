@@ -1,7 +1,7 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { WishlistContext } from "../context/WishlistProvider";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import styles from "./Wishlist.module.css";
 
 export default function Wishlist() {
     const { wishlist, removeFromWishlist } = useContext(WishlistContext);
@@ -17,35 +17,45 @@ export default function Wishlist() {
     );
 
     return (
-        <div>
-            <h1>Ma wishlist</h1>
+        <div className={styles.page}>
+            <h1 className={styles.title}>Ma wishlist</h1>
+
             <input
+                className={styles.input}
                 type="text"
                 placeholder="Rechercher dans la wishlist..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
             />
 
-            {filteredWishlist.map((movie) => (
-                <div key={movie.id}>
-                    <h3>{movie.title}</h3>
+            <div className={styles.grid}>
+                {filteredWishlist.map((movie) => (
+                    <div className={styles.card} key={movie.id}>
+                        <img
+                            className={styles.poster}
+                            src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                            alt={movie.title}
+                        />
 
-                    <img
-                        src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                        alt={movie.title}
-                    />
+                        <h3 className={styles.movieTitle}>{movie.title}</h3>
 
-                    <p>Note : {movie.vote_average}</p>
+                        <p className={styles.note}>⭐ {movie.vote_average}</p>
 
-                    <Link to={`/movie/${movie.id}`}>
-                        <button>Voir les détails</button>
-                    </Link>
+                        <div className={styles.actions}>
+                            <Link to={`/movie/${movie.id}`}>
+                                <button className={styles.button}>Détails</button>
+                            </Link>
 
-                    <button onClick={() => removeFromWishlist(movie.id)}>
-                        Retirer
-                    </button>
-                </div>
-            ))}
+                            <button
+                                className={styles.button}
+                                onClick={() => removeFromWishlist(movie.id)}
+                            >
+                                Retirer
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
